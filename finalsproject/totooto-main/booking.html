@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Booking Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar with Logout -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="eventregistration.html">Event Registration</a>
+      <div class="ms-auto">
+        <button class="btn btn-danger btn-sm" id="logoutButton">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Registration Form Container -->
+  <div class="container my-5" id="registrationForm">
+    <h2 class="text-center mb-4">Event Booking Registration</h2>
+    <form id="bookingForm" class="mx-auto" style="max-width: 500px;">
+      
+      <!-- Event Dropdown -->
+      <div class="mb-3">
+        <label for="eventName" class="form-label">Event Name</label>
+        <select class="form-select" id="eventName" name="eventName" required>
+          <option value="" disabled selected>Select an event</option>
+        </select>
+      </div>
+
+      <!-- Auto-filled fields -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (₱)</label>
+        <input type="number" class="form-control" id="price" name="price" readonly>
+      </div>
+
+      <!-- User input -->
+      <div class="mb-3">
+        <label for="fullname" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullname" name="fullname" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+
+    <div id="successMsg" class="alert alert-success mt-3 d-none" role="alert">
+      Registration successful!
+    </div>
+  </div>
+
+  <!-- Script Section -->
+  <script>
+    // Event data map
+    const eventData = {
+      "Tyler, The Creator": { location: "MOA Arena" },
+      "beabadoobee": { location: "New Frontier Theater" },
+      "Mariah Carey": { location: "Araneta Coliseum" },
+      "The Lord of The Rings & The Hobbit": { location: "Samsung Performing Arts Theatre" },
+      "Tropang Giga Men's Basketball": { location: "Smart Araneta Coliseum" },
+      "San Miguel Beermen": { location: "MOA Arena" },
+      "FIVB Volleyball Men's World Championship": { location: "PhilSports Arena" },
+      "Rain or Shine Elasto Painters Men's Basketball": { location: "Ynares Center" },
+      "Swan Lake": { location: "Cultural Center of the Philippines" },
+      "The Lord of The Rings & The Hobbit (Theatre)": { location: "Samsung Performing Arts Theatre" },
+      "Dear Evan Hansen": { location: "The Theatre at Solaire" },
+      "Kenneth Bruce Gorelick": { location: "Newport Performing Arts Theater" }
+    };
+
+    window.addEventListener('DOMContentLoaded', function () {
+      const eventSelect = document.getElementById('eventName');
+      const locationInput = document.getElementById('location');
+      const priceInput = document.getElementById('price');
+
+      // Populate dropdown
+      Object.keys(eventData).forEach(event => {
+        const option = document.createElement('option');
+        option.value = event;
+        option.textContent = event;
+        eventSelect.appendChild(option);
+      });
+
+      // If previously selected event exists
+      const savedEvent = sessionStorage.getItem('selectedEvent');
+      if (savedEvent && eventData[savedEvent]) {
+        eventSelect.value = savedEvent;
+        locationInput.value = eventData[savedEvent].location;
+        priceInput.value = 500;
+      }
+
+      // Update fields on change
+      eventSelect.addEventListener('change', () => {
+        const selected = eventSelect.value;
+        if (eventData[selected]) {
+          locationInput.value = eventData[selected].location;
+          priceInput.value = 500;
+          sessionStorage.setItem('selectedEvent', selected);
+        } else {
+          locationInput.value = '';
+          priceInput.value = '';
+        }
+      });
+
+      // Form submission
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        document.getElementById('successMsg').classList.remove('d-none');
+        this.reset();
+        locationInput.value = '';
+        priceInput.value = '';
+        eventSelect.selectedIndex = 0;
+        sessionStorage.removeItem('selectedEvent');
+      });
+
+      // Logout button
+      document.getElementById('logoutButton').addEventListener('click', function () {
+        alert('You have been logged out.');
+        window.location.href = 'register.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

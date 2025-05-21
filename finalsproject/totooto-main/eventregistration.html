@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .navbar-nav .nav-link {
+      color: #333;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #28a745;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .filter-bar select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .event-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: scale(1.05);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar with Book Button -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Registration</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">All Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sports.html">Sports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="concert.html">Concerts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Theater</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-success btn-sm ms-3" href="booking.html">Book</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger btn-sm ms-2" id="logoutButton">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Explore Events Near Quezon City</h1>
+    <p>Find and register for exciting events happening in your area.</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar container">
+    <select>
+      <option value="">Location</option>
+      <option value="Manila">Manila</option>
+      <option value="Cebu">Cebu</option>
+      <option value="Quezon City">Quezon City</option>
+      <option value="Gulod">Gulod</option>
+    </select>
+    <select>
+      <option value="">Date</option>
+      <option value="Today">Today</option>
+      <option value="This Week">This Week</option>
+    </select>
+    <select>
+      <option value="Price">Price</option>
+      <option value="500">₱500</option>
+      <option value="Paid">Paid</option>
+    </select>
+  </div>
+
+  <!-- Events -->
+  <div class="container my-5">
+
+    <!-- Concerts -->
+    <h2 class="text-center">Concerts</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="concert.PNG" class="card-img-top" alt="Tyler, The Creator">
+          <div class="card-body">
+            <h5 class="card-title">Tyler, The Creator</h5>
+            <p class="card-text">20 Sep - 21 Sep</p>
+            <p class="card-text">3 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="concert2.PNG" class="card-img-top" alt="beabadoobee">
+          <div class="card-body">
+            <h5 class="card-title">beabadoobee</h5>
+            <p class="card-text">12 Aug - 13 Aug</p>
+            <p class="card-text">2 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="concert3.PNG" class="card-img-top" alt="Mariah Carey">
+          <div class="card-body">
+            <h5 class="card-title">Mariah Carey</h5>
+            <p class="card-text">Tue, 14 Oct • 13:00</p>
+            <p class="card-text">1 event near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="concert4.PNG" class="card-img-top" alt="The Lord of The Rings & The Hobbit">
+          <div class="card-body">
+            <h5 class="card-title">The Lord of The Rings & The Hobbit</h5>
+            <p class="card-text">Tue, 08 Jul • 10:00</p>
+            <p class="card-text">1 event near you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sports -->
+    <h2 class="text-center">Sports</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="gigamen.webp" class="card-img-top" alt="Tropang Giga Men's Basketball">
+          <div class="card-body">
+            <h5 class="card-title">Tropang Giga Men's Basketball</h5>
+            <p class="card-text">14 May - 30 May</p>
+            <p class="card-text">3 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="sanmiguelbeermen.webp" class="card-img-top" alt="San Miguel Beermen">
+          <div class="card-body">
+            <h5 class="card-title">San Miguel Beermen</h5>
+            <p class="card-text">01 Jun - 15 Jun</p>
+            <p class="card-text">3 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="vball.png" class="card-img-top" alt="FIVB Volleyball Men's World Championship">
+          <div class="card-body">
+            <h5 class="card-title">FIVB Volleyball Men's World Championship</h5>
+            <p class="card-text">12 Sep - 28 Sep</p>
+            <p class="card-text">18 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="rs.webp" class="card-img-top" alt="Rain or Shine Elasto Painters Men's Basketball">
+          <div class="card-body">
+            <h5 class="card-title">Rain or Shine Elasto Painters Men's Basketball</h5>
+            <p class="card-text">Fri, 30 May • 09:00</p>
+            <p class="card-text">1 event near you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theatre -->
+    <h2 class="text-center">Theatrer</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="swan lake.PNG" class="card-img-top" alt="Swan Lake">
+          <div class="card-body">
+            <h5 class="card-title">Swan Lake</h5>
+            <p class="card-text">14 May - 01 Jun</p>
+            <p class="card-text">5 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="lord of the rings.PNG" class="card-img-top" alt="The Lord of The Rings & The Hobbit">
+          <div class="card-body">
+            <h5 class="card-title">The Lord of The Rings & The Hobbit</h5>
+            <p class="card-text">Tue, 08 Jul • 10:00</p>
+            <p class="card-text">1 event near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="dear evan.PNG" class="card-img-top" alt="Dear Evan Hansen">
+          <div class="card-body">
+            <h5 class="card-title">Dear Evan Hansen</h5>
+            <p class="card-text">17 Jul - 20 Sep</p>
+            <p class="card-text">14 events near you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="kenneth bruce.PNG" class="card-img-top" alt="Kenneth Bruce Gorelick">
+          <div class="card-body">
+            <h5 class="card-title">Kenneth Bruce Gorelick</h5>
+            <p class="card-text">Tue, 15 Jul • 13:00</p>
+            <p class="card-text">1 event near you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', function () {
+      alert('You have been logged out.');
+      window.location.href = 'register.html';
+    });
+  </script>
+</body>
+</html>
